@@ -1,32 +1,87 @@
-# _Sample project_
+# TODO – FreqForge (ESP32 Synthesizer)
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+## Phase 0 – Projektgrundlage
+- [ ] ESP-IDF Grundprojekt erstellen (template app)
+- [ ] Projektstruktur anlegen (/src, /include, /drivers, /audio, /ui, /config)
+- [ ] CMakeLists so konfigurieren, dass alle Ordner eingebunden werden
+- [ ] Erste erfolgreiche `idf.py build flash monitor`
 
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
+---
 
+## Phase 1 – Hardware-Bootstrapping
+- [ ] LED-Blink-Test (GPIO)
+- [ ] Logging über UART testen
+- [ ] Stromversorgung & USB-Stabilität sicherstellen
 
+---
 
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
+## Phase 2 – Display (ST7789)
+- [ ] SPI initialisieren
+- [ ] `drivers/st7789.cpp/h` erstellen
+- [ ] Grundfunktionen: Bildschirm löschen, Pixel setzen, Rechteck, Text
+- [ ] `ui/display.cpp/h` anlegen (Wrapper für UI-Komponenten)
+- [ ] Testanzeige: "FreqForge Boot OK"
 
-## Example folder contents
+---
 
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
+## Phase 3 – Inputs (Potis & Buttons)
+- [ ] ADC-Konfiguration
+- [ ] Poti-Lesen + Glättung (Low-Pass Filter)
+- [ ] Buttons konfigurieren (GPIO + Pull-Up)
+- [ ] Debounce einbauen
+- [ ] Input-Werte auf dem Display anzeigen
 
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
+---
 
-Below is short explanation of remaining files in the project folder.
+## Phase 4 – Audio-Ausgabe
+- [ ] `drivers/dac.cpp/h` erstellen
+- [ ] I2S konfigurieren (für externen DAC)
+- [ ] Buffer schreiben
+- [ ] Test-Ton (Sine 440 Hz) ausgeben
 
-```
-├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
-```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+---
+
+## Phase 5 – Audio Engine
+- [ ] Oszillator-Klasse erstellen (sin, square, saw)
+- [ ] Phase-Accumulator implementieren
+- [ ] Mixer für mehrere Stimmen
+- [ ] Parameter-Struktur: freq, waveform, volume
+- [ ] Störfreie Audio-Schleife (High-Priority Task)
+
+---
+
+## Phase 6 – UI ↔ Engine Verbindung
+- [ ] Potis → Frequenz, Wellenform, Lautstärke
+- [ ] Buttons → Mode/Bank/OSC auswählen
+- [ ] Display → Werte live visualisieren
+- [ ] Basis-Synth läuft stabil
+
+---
+
+## Phase 7 – System-Stabilität
+- [ ] Task-Struktur optimieren:
+  - [ ] Audio-Task (High)
+  - [ ] UI-Task (Normal)
+  - [ ] Input-Task (Low)
+- [ ] Parameter-Smoothing (keine Klicks)
+- [ ] SPI-Update-Frequenz optimieren (Display-FPS)
+- [ ] Speicherlecks checken
+
+---
+
+## Phase 8 – Erweiterungen (optional)
+- [ ] ADSR-Hüllkurve (Attack/Decay/Sustain/Release)
+- [ ] Filter (Lowpass/Highpass)
+- [ ] Delay/Chorus
+- [ ] Mehrere OSC-Layer
+- [ ] Presets speichern (NVS)
+- [ ] Menüsystem für Einstellungen
+
+---
+
+## Mini-Meilensteine
+- [ ] **Day 1**: Build + Blink + Logging  
+- [ ] **Day 2**: Display läuft  
+- [ ] **Day 3**: Inputs stabil  
+- [ ] **Day 4**: DAC + 440 Hz  
+- [ ] **Day 5**: Synth-Basis (OSC + Mixer + UI)

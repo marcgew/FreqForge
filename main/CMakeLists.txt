@@ -15,9 +15,12 @@ idf_component_register(
         "interface/input.c"
         "interface/display.c"
 
+        "input/input.c"
+
     INCLUDE_DIRS
         "."
         "audio"
         "drivers"
         "interface"
+        "input"
 )

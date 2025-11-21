@@ -1,40 +1,26 @@
 # TODO – FreqForge (ESP32 Synthesizer)
 
-## Phase 0 – Projektgrundlage
-- [ ] ESP-IDF Grundprojekt erstellen (template app)
-- [ ] Projektstruktur anlegen (/src, /include, /drivers, /audio, /ui, /config)
-- [ ] CMakeLists so konfigurieren, dass alle Ordner eingebunden werden
-- [ ] Erste erfolgreiche `idf.py build flash monitor`
-
----
-
-## Phase 1 – Hardware-Bootstrapping
-- [ ] LED-Blink-Test (GPIO)
-- [ ] Logging über UART testen
-- [ ] Stromversorgung & USB-Stabilität sicherstellen
-
----
 
 ## Phase 2 – Display (ST7789)
 - [ ] SPI initialisieren
-- [ ] `drivers/st7789.cpp/h` erstellen
+- [ ] `drivers/st7789.c/h` erstellen
 - [ ] Grundfunktionen: Bildschirm löschen, Pixel setzen, Rechteck, Text
-- [ ] `ui/display.cpp/h` anlegen (Wrapper für UI-Komponenten)
+- [ ] `ui/display.c/h` anlegen (Wrapper für UI-Komponenten)
 - [ ] Testanzeige: "FreqForge Boot OK"
 
 ---
 
 ## Phase 3 – Inputs (Potis & Buttons)
-- [ ] ADC-Konfiguration
-- [ ] Poti-Lesen + Glättung (Low-Pass Filter)
-- [ ] Buttons konfigurieren (GPIO + Pull-Up)
+- [-] ADC-Konfiguration
+- [-] Poti-Lesen + Glättung (Low-Pass Filter)
+- [-] Buttons konfigurieren (GPIO + Pull-Up)
 - [ ] Debounce einbauen
 - [ ] Input-Werte auf dem Display anzeigen
 
 ---
 
 ## Phase 4 – Audio-Ausgabe
-- [ ] `drivers/dac.cpp/h` erstellen
+- [ ] `drivers/dac.c/h` erstellen
 - [ ] I2S konfigurieren (für externen DAC)
 - [ ] Buffer schreiben
 - [ ] Test-Ton (Sine 440 Hz) ausgeben
